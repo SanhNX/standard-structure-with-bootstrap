@@ -1,0 +1,145 @@
+/* 1. Structure */
+/*--------------------------------------*/
+
+// Used for restricting the maximum dimensions of responsive images
+// --------------------------------------------------------------------------
+.maxSize(@height, @width) {
+  max-height: @height;
+  max-width: @width;
+}
+
+/* 2.1 Font Sizing */
+/*--------------------------------------*/
+.setFontSizes(@fontSize) {
+    .setFontSizes(@fontSize, @fontSize * 1.5);
+}
+
+.setFontSizes(@fontSize, @lineHeight) {
+    @unitlessSize: unit(@fontSize);
+    @lineHeightEm: round(unit(@lineHeight) / @unitlessSize, 3);
+    .setFontSize(@fontSize);
+    line-height: @lineHeightEm; // should be equivalent to ~"{@lineheight}px"
+}
+
+.setFontSize(@fontSize) {
+    @unitlessSize: unit(@fontSize);
+    @remValue: @unitlessSize / 10;
+    font-size: ~"@{unitlessSize}px"; // Unsupported browser fallback
+    font-size: ~"@{remValue}rem";
+}
+
+/* 2.2 Custom Fonts */
+/*--------------------------------------*/
+.fontarialregular() {
+    font-family: @sansFontFamily;
+    font-style: normal;
+    font-weight: normal;
+}
+
+.fontarialbold() {
+    font-family: @sansFontFamily;
+    font-style: normal;
+    font-weight: bold;
+}
+
+/* 2.3 Font Sizes */
+/*--------------------------------------*/
+.fontopensansregular-s30() {
+    .fontopensansregular();
+    .setFontSizes(30px,36px);
+}
+
+.font1() {
+    .fontproximanovaregular-s50();
+
+    @media (max-width: 767px) {
+        .fontproximanovaregular-s24();
+    }
+}
+
+.arial-s11() {
+    font-family: @sansFontFamily;
+    .setFontSizes(11px);
+    letter-spacing: initial;
+    text-transform: none;
+}
+
+/* 3. Images */
+/*--------------------------------------*/
+
+/* 3.1 Background Images */
+/*--------------------------------------*/
+/* Sprite Sheets and relative url handling */
+/*--------------------------------------*/
+.getImageRelativeUrl(@imageUrl) {
+    @relativeImageUrl: "@{pathToRoot}images/@{imageUrl}";
+}
+
+.backgroundImage(@imageUrl) {
+    .getImageRelativeUrl(@imageUrl);
+    background-image: url(@relativeImageUrl);
+}
+
+.background(@imageUrl, @args) {
+    .getImageRelativeUrl(@imageUrl);
+    background: url(@relativeImageUrl) @args;
+}
+
+.backgroundWithSize(@imageUrl, @width, @height) {
+    .size(@width, @height);
+    background: url(@imageUrl) 0 0 no-repeat;
+    background-size: 100% 100%;
+}
+
+.backgroundSprite(@imageUrl, @xpos: 0, @ypos: 0, @bgColor: transparent) {
+    .getImageRelativeUrl(@imageUrl);
+    background: @bgColor url(@relativeImageUrl) no-repeat scroll @xpos @ypos;
+}
+
+.backgroundRepeatBoth(@imageUrl, @xpos: 0, @ypos: 0, @bgColor: transparent) {
+    .getImageRelativeUrl(@imageUrl);
+    background: @bgColor url(@relativeImageUrl) repeat scroll @xpos @ypos;
+}
+
+.backgroundRepeatVert(@imageUrl, @xpos: 0, @ypos: 0, @bgColor: transparent) {
+    .getImageRelativeUrl(@imageUrl);
+    background: @bgColor url(@relativeImageUrl) repeat-y scroll @xpos @ypos;
+}
+
+.backgroundRepeatHoriz(@imageUrl, @xpos: 0, @ypos: 0, @bgColor: transparent) {
+    .getImageRelativeUrl(@imageUrl);
+    background: @bgColor url(@relativeImageUrl) repeat-x scroll @xpos @ypos;
+}
+
+.cursorImage(@cursorUrl, @cursorType: pointer) {
+    .getImageRelativeUrl(@imageUrl);
+    cursor: url(@relativeImageUrl), @cursorType;
+}
+
+.contentImage(@imageUrl) {
+    .getImageRelativeUrl(@imageUrl);
+    content: url(@relativeImageUrl);
+}
+
+/* 3.2 Spritesmith Extensions */
+/*--------------------------------------*/
+.sprite-image(@sprite) {
+    @sprite-image: ~`"@{sprite}".split(', ')[8].slice(1, -2)`;
+    .backgroundImage(@spriteSheet);
+}
+
+.sprite-size(@sprite) {
+    @sprite-height: ~`"@{sprite}".split(', ')[5]`;
+    @sprite-width: ~`"@{sprite}".split(', ')[4]`;
+    .size(@sprite-height, @sprite-width);
+}
+
+/* 4. Vendor Prefixes */
+/*--------------------------------------*/
+.transition-timing(@transition-timing-function) {
+  -webkit-transition-timing-function: @transition-timing-function;
+     -moz-transition-timing-function: @transition-timing-function;
+      -ms-transition-timing-function: @transition-timing-function;
+       -o-transition-timing-function: @transition-timing-function;
+          transition-timing-function: @transition-timing-function;
+}
