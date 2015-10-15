@@ -1,5 +1,5 @@
 {
-  "name": "Standard_Strucure_With_Bootstrap",
+  "name": "lw4u-2",
   "version": "0.1.0",
   "devDependencies": {
     "grunt": "~0.4.4",
@@ -8,8 +8,8 @@
     "grunt-contrib-less": "latest",
     "grunt-contrib-uglify": "latest",
     "grunt-contrib-watch": "latest",
-    "gulp-jshint": "^1.9.0",
-    "grunt-spritesmith": ">= 3.0.0",
+    "gulp-jshint": "latest",
+    "grunt-spritesmith": "latest",
     "jshint-stylish": "latest"
   }
 }

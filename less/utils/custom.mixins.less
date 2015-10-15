@@ -42,11 +42,34 @@
     font-weight: bold;
 }
 
+.fonthanzelnormal() {
+    font-family: 'HanzelNormal';
+    .setFontSizes(23px);
+}
+
+.fontseagull{
+  font-family:'Seagull';
+  .setFontSizes(35px);
+}
+
+.fontopensansregular() {
+  font-family: "OpenSans-Regular", script;
+  font-style: normal;
+  font-weight: 400;
+}
+
 /* 2.3 Font Sizes */
 /*--------------------------------------*/
 .fontopensansregular-s30() {
     .fontopensansregular();
     .setFontSizes(30px,36px);
+}
+
+.fontmontrealserialregular() {
+  font-family: "MontrealSerial-Regular", script;
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: 0.04em;
 }
 
 .font1() {
@@ -89,6 +112,12 @@
     .size(@width, @height);
     background: url(@imageUrl) 0 0 no-repeat;
     background-size: 100% 100%;
+}
+
+.backgroundWithSizePosition(@imageUrl, @width, @height, @x, @y, @sizeWidth, @sizeHeight) {
+  .size(@width, @height);
+  background: url(@imageUrl) @x @y no-repeat;
+  background-size: @sizeWidth @sizeHeight;
 }
 
 .backgroundSprite(@imageUrl, @xpos: 0, @ypos: 0, @bgColor: transparent) {
@@ -143,3 +172,21 @@
        -o-transition-timing-function: @transition-timing-function;
           transition-timing-function: @transition-timing-function;
 }
+
+.background-gradient(@r; @g; @b; @opacity: 1) {
+    background: -webkit-rgba(@r, @g, @b, @opacity);
+    background: -o-rgba(@r, @g, @b, @opacity);
+    background: -ms-rgba(@r, @g, @b, @opacity);
+    background: -moz-rgba(@r, @g, @b, @opacity);
+    background: rgba(@r, @g, @b, @opacity);
+}
+
+.gray-scale-filter(@filter) {
+    filter: gray;
+    -webkit-filter: grayscale(@filter);
+}
+.gray-scale-filter(@filter) when (@filter = 0) {
+    filter: none;
+    -webkit-filter: grayscale(@filter);
+}
+

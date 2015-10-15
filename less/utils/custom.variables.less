@@ -2,26 +2,34 @@
 // Variables
 // --------------------------------------------------
 
-@sansFontFamily:          Arial, Helvetica, sans-serif;
 
 // Colour palette
 // --------------------------------------------------
 
-@color01:       #422774;
-@color02:       #f1f1f1;
-@color03:       #004966;
-@color04:       #666666;
-@color05:       #111111;
+@color01:       #666666;
 
-@white  :       #ffffff;
-@black  :       #000000;
+@white             :       #ffffff;
+@black             :       #000000;
+
 
 // Custom font
 // --------------------------------------------------
-@font-face {
-  font-family: 'Arial', 'Helvetica', 'sans-serif';
+/*@font-face {
+  font-family: '';
   font-weight: normal;
+}*/
+
+@font-face { 
+	font-family: 'HanzelNormal'; 
+	src: url('../fonts/HanzelNormal.eot?#iefix') format('embedded-opentype'), 
+	url('../fonts/HanzelNormal.woff') format('woff'), 
+	url('../fonts/HanzelNormal.ttf') format('truetype'), 
+	url('../fonts/HanzelNormal.svg#HanzelNormal') format('svg'); 
+	font-weight: normal; 
+	font-style: normal; 
 }
+
+@sansFontFamily:          Arial, Helvetica, sans-serif;
 
 // CUSTOM GRID
 // --------------------------------------------------
@@ -57,7 +65,7 @@
 
 // image path
 // -------------------------
-@spriteSheet:               "sprites.png";
+@spriteSheet:               "spritesheet.png";
 @hrEnd:                     "hr-end.png";
 @hrEndDark:                 "hr-end-dark.png";
 @swatch-miscellaneous:      "icon-color-swatch-misc.png";

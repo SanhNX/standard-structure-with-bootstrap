@@ -35,11 +35,11 @@ module.exports = function(grunt) {
         },
         // compile less stylesheets to css -----------------------------------------
         less: {
-            'm-compile-less': {
+            'lw4u-compile-less': {
                 files: {
                     'css/components.css': 'less/components/_components.less',
-                    'css/bootstrap.css': 'less/thirdparty/_thirdparty.less'/*,
-                    'css/responsive.css': 'less/responsive/_responsive.less'*/
+                    'css/bootstrap.css': 'less/thirdparty/_thirdparty.less',
+                    'css/responsive.css': 'less/responsive/_responsive.less'
                 }
             }
         },
@@ -59,7 +59,7 @@ module.exports = function(grunt) {
                 // for stylesheets, watch css and less files
                 // only run less and cssmin
                 files: ['less/**/*.less'],
-                tasks: ['less:m-compile-less']
+                tasks: ['less:lw4u-compile-less']
             },
             livereload: {
                 // Here we watch the files the less task will compile to
@@ -69,7 +69,7 @@ module.exports = function(grunt) {
             }
         },
         sprite:{
-            all: {
+            'lw4u-compile-sprites': {
                 algorithm: 'top-down',
                 src: 'images/sprites/*',
                 dest: 'images/spritesheet.png',
@@ -90,8 +90,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-spritesmith');
-    grunt.registerTask('m-compile-all', ['sprite', 'less:m-compile-less']); // create task for environment
-    grunt.registerTask('m-watch-less', ['watch:less']); // create task for environment
+    grunt.registerTask('lw4u-compile-all', ['sprite:lw4u-compile-sprites', 'less:lw4u-compile-less']); // create task for environment
+    grunt.registerTask('lw4u-watch-less', ['watch:less']); // create task for environment
     grunt.registerTask('demo', function(){
         console.log("IM DEMO TASK");
     });

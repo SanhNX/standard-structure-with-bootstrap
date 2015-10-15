@@ -13,10 +13,6 @@ $(document).ready(function() {
         } else {
             jQuery('.scroll-top').stop(false,true).fadeOut(600);
         }
-
-        if(jQuery(this).scrollTop() == 500/* || jQuery(this).scrollTop() == 3071*/){
-            wow.init();
-        }
     });
 
     // scroll body to 0px on click
@@ -25,27 +21,7 @@ $(document).ready(function() {
         return false;
     });
 
-    jQuery(window).bind('scroll', function() {
-		 if (jQuery(window).scrollTop() > 0) {
-			 jQuery('#header_outer').addClass('fixed');
-		 }
-		 else {
-			 jQuery('#header_outer').removeClass('fixed');
-		 }
-	});	
 
-	wow = new WOW(
-      {
-    		boxClass:     'wow',      // default
-			animateClass: 'animated', // default
-			offset:       0,          // default
-			mobile:       true,       // default
-			live:         true
-      }
-    );
-    wow.init();
-
-    $('#header_outer').scrollToFixed();
     $('.res-nav_click').click(function(){
         $('.main-nav').slideToggle();
         return false;
@@ -54,21 +30,6 @@ $(document).ready(function() {
     $('.res-nav_click').click(function(){
         $('ul.toggle').slideToggle(600) 
     });
-
-    $('a').bind('click',function(event){
-		var $anchor = $(this);
-		
-		$('html, body').stop().animate({
-			scrollTop: $($anchor.attr('href')).offset().top - 91
-		}, 1500,'easeInOutExpo');
-		/*
-		if you don't want to use the easing effects:
-		$('html, body').stop().animate({
-			scrollTop: $($anchor.attr('href')).offset().top
-		}, 1000);
-		*/
-		event.preventDefault();
-	});
 });
 
 function scrollToY(y, animate) {
