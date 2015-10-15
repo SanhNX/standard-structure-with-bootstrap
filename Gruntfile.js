@@ -91,6 +91,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-spritesmith');
     grunt.registerTask('lw4u-compile-all', ['sprite:lw4u-compile-sprites', 'less:lw4u-compile-less']); // create task for environment
+    grunt.registerTask('lw4u-compile-sprites', ['sprite:lw4u-compile-sprites']); // create task for environment
+    grunt.registerTask('lw4u-compile-less', ['less:lw4u-compile-less']); // create task for environment
     grunt.registerTask('lw4u-watch-less', ['watch:less']); // create task for environment
     grunt.registerTask('demo', function(){
         console.log("IM DEMO TASK");
