@@ -7,6 +7,16 @@ module.exports = function(grunt) {
     // CONFIGURE GRUNT ===========================================================
     // ===========================================================================
     grunt.initConfig({
+        // This is optional!
+        notify_hooks: {
+            options: {
+                enabled: true,
+                max_jshint_notifications: 5, // maximum number of notifications from jshint output
+                title: "Project Name", // defaults to the name in package.json, or will use project directory's name
+                success: false, // whether successful grunt executions should be notified automatically
+                duration: 3 // the duration of notification in seconds, for `notify-send only
+            }
+        },
 
         // get the configuration info from package.json ----------------------------
         // this way we can use things like name and version (pkg.name)
@@ -89,6 +99,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-notify');
     grunt.loadNpmTasks('grunt-spritesmith');
     grunt.registerTask('lw4u-compile-all', ['sprite:lw4u-compile-sprites', 'less:lw4u-compile-less']); // create task for environment
     grunt.registerTask('lw4u-compile-sprites', ['sprite:lw4u-compile-sprites']); // create task for environment

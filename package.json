@@ -1,6 +1,9 @@
 {
   "name": "lw4u-2",
   "version": "0.1.0",
+  "description": "A simple RESTFul API created using nodejs that talks to Mongodb database",
+  "author": "SanhNX",
+  "license": "littleweb4u",
   "devDependencies": {
     "grunt": "~0.4.4",
     "grunt-contrib-cssmin": "latest",
@@ -10,6 +13,12 @@
     "grunt-contrib-watch": "latest",
     "gulp-jshint": "latest",
     "grunt-spritesmith": "latest",
-    "jshint-stylish": "latest"
-  }
+    "jshint-stylish": "latest",
+    "grunt-notify": "latest",
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3",
+    "mongoose": "^4.1.3",
+    "node-restful": "^0.2.2"
+  },
+  "main": "server.js"
 }
